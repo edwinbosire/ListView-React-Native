@@ -5,7 +5,8 @@ import {
     Text,
     View,
     ListView,
-    TextInput
+    TextInput,
+    ActivityIndicator
 } from 'react-native';
 import Row from './Row';
 import Header from './Header';
@@ -19,10 +20,13 @@ export default class Feed extends Component {
             rowHasChanged: (r1, r2) => r1 !== r2
         });
         this.state = {
-            dataSource: new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2}),
+            dataSource: new ListView.DataSource({
+                rowHasChanged: (row1, row2) => row1 !== row2
+            }),
             loaded: false,
             isAnimating: true,
-            isRefreshing: false
+            isRefreshing: false,
+            feedURL: 'https://raw.githubusercontent.com/edwinbosire/ListView-React-Native/master/resources/business.json'
         };
     }
 
@@ -42,10 +46,7 @@ export default class Feed extends Component {
     fetchNews() {
         this.setState({isRefreshing: true})
 
-        fetch('http://trevor-producer-cdn.api.bbci.co.uk/content/cps/news/world')
-        .then((response) => response.json())
-        .then((responseData) => this.filterNews(responseData))
-        .then((newsItems) => {
+        fetch(this.state.feedURL).then((response) => response.json()).then((newsItems) => {
             this.setState({
                 dataSource: this
                     .state
@@ -58,16 +59,43 @@ export default class Feed extends Component {
         }).done();
     }
 
-    render() {
+    renderNewsFeed() { 
         return (
-            <ListView
-                style={styles.container}
-                dataSource={this.state.dataSource}
-                renderRow={(rowData) => <Row {...rowData}/>}
-                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-                renderHeader={() => <Header/>}
-                renderFooter={() => <Footer/>}/>
+        < ListView
+        style = {
+            styles.container
+        }
+        dataSource = {
+            this.state.dataSource
+        }
+        renderRow = {
+            (rowData) => <Row {...rowData}/>
+        }
+        renderSeparator = {
+            (sectionId, rowId) => <View key={rowId} style={styles.separator}/>
+        }
+        renderHeader = {
+            () => <Header/>
+        }
+        renderFooter = {
+            () => <Footer/>
+        } />
         );
+    }
+
+    renderLoadingIndicator() {
+        return(
+         <View style = {{flexDirection: 'row', justifyContent: 'center', flex: 1}} > 
+            <ActivityIndicator
+                animating={this.state.animating}
+                style={[ styles.centering, {height: 80}]}
+                size="large"/>
+        </View>
+        );
+    }
+
+    render() {
+        return this.state.animating? this.renderLoadingIndicator() : this.renderNewsFeed()
     }
 }
 
@@ -99,5 +127,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         backgroundColor: '#FFFFFF',
         borderRadius: 2
-    }
+    },
+    centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+  }
 });
