@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         padding: 8,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'rgba(149, 165, 166,1.0)'
+        backgroundColor: 'rgba(52, 73, 94,1.0)'
     },
     input: {
         height: 30,

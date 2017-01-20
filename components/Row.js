@@ -6,11 +6,14 @@ export default class Row extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            picture: props.picture.large,
-            firstName: props.name.first,
-            lastName: props.name.last,
-            location: props.location.state
+            picture: props.photo,
+            title: props.title,
+            articleDate: props.articleDate,
+            category: props.section[1].parent,
+            story: props.story,
+            caption: props.caption
         }
+        console.log("State of a story", this.state)
     }
     render() {
         return (
@@ -22,11 +25,12 @@ export default class Row extends Component {
                     style={styles.photo}/>
 
                 <View style={styles.textView}>
-                    <Text style={styles.text}>
-                        {`${this.state.firstName} ${this.state.lastName}`}
+                    <Text style={styles.title}>
+                        {`${this.state.title}`}
                     </Text>
                     <Text style={styles.location}>
-                        {this.state.location}</Text>
+                        {this.state.articleDate} | {this.state.category}
+                    </Text>
                 </View>
 
             </View>
@@ -44,20 +48,26 @@ const styles = StyleSheet.create({
     },
     textView: {
         flexDirection: 'column',
-        marginLeft: 12,
+        margin: 12,
     },
-    text: {
+    title: {
         fontWeight:'600',
-        fontSize: 18
+        fontSize: 18,
+        
     },
     location: {
-        marginTop: 5,
         fontSize: 14,
         color: 'rgba(127, 140, 141,1.0)',
+        marginTop: 25,
     },
     photo: {
-        height: 50,
-        width: 50,
-        borderRadius: 25
-    }
+        height: 100,
+        width: 100,
+    },
+    border: {
+    padding: 3,
+    borderLeftWidth: 1,
+    borderLeftColor: 'black',
+    borderStyle: 'solid'
+  }
 });

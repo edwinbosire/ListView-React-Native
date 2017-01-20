@@ -10,18 +10,18 @@ import {AppRegistry, StyleSheet, Text, View, ListView} from 'react-native';
 export default class ListViewDemo extends Component {
 
   getInitialState() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    var ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
     return {
       dataSource: ds.cloneWithRows(['Bad and Boujie', 'Oooou', 'Leg over', 'Bank alert', 'Ferrari'])
     };
   }
 
   render() {
-    return (
-      <ListView
+    return (<ListView
       dataSource={this.state.dataSource}
-      renderRow={(rowData) => <Text>{rowData}</Text>} />
-    );
+      renderRow={(rowData) => <Text>{rowData}</Text>}/>);
   }
 }
 
