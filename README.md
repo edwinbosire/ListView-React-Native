@@ -13,12 +13,12 @@ Lesson3: Fetching data from remote API
 
 - [x] Navigation Bar & Routing
 - [x] List View
-- [] Customised cell/row item
+- [x] Customised cell/row item
 - [x] Fetching & parsing remote data using Fetch
 - [x] Using promise constructs
 - [x] Time formating using moments
-- [] Details View
-- [] Touchable row items
+- [ ] Details View
+- [ ] Touchable row items
 
 #Getting started
 
