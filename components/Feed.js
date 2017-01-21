@@ -61,25 +61,13 @@ export default class Feed extends Component {
 
     renderNewsFeed() { 
         return (
-        < ListView
-        style = {
-            styles.container
-        }
-        dataSource = {
-            this.state.dataSource
-        }
-        renderRow = {
-            (rowData) => <Row {...rowData}/>
-        }
-        renderSeparator = {
-            (sectionId, rowId) => <View key={rowId} style={styles.separator}/>
-        }
-        renderHeader = {
-            () => <Header/>
-        }
-        renderFooter = {
-            () => <Footer/>
-        } />
+        < ListView style = {styles.container}
+            dataSource = {this.state.dataSource}
+            renderRow = {(rowData) => <Row {...rowData}/>}
+            // renderSeparator = {(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+            // renderHeader = {() => <Header/>}
+            renderFooter = {() => <Footer/>} 
+        />
         );
     }
 
@@ -102,7 +90,8 @@ export default class Feed extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF'
+        backgroundColor: 'rgba(236, 240, 241,1.0)',
+        marginBottom:60
     },
     welcome: {
         fontSize: 20,
@@ -117,8 +106,7 @@ const styles = StyleSheet.create({
     separator: {
         flex: 1,
         height: StyleSheet.hairlineWidth,
-        backgroundColor: '#8E8E8E',
-        marginLeft: 40
+        backgroundColor: '#8E8E8E'
     },
     input: {
         height: 30,
