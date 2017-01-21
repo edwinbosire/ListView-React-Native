@@ -26,7 +26,7 @@ export default class Feed extends Component {
             loaded: false,
             isAnimating: true,
             isRefreshing: false,
-            feedURL: 'https://raw.githubusercontent.com/edwinbosire/ListView-React-Native/master/resources/business.json'
+            feedURL: 'http://d2lpx143050ayq.cloudfront.net/dailynation/politics.json'
         };
     }
 

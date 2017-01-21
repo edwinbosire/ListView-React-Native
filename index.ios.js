@@ -5,14 +5,15 @@
  */
 
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, View, NavigatorIOS, StatusBarIOS} from 'react-native';
+import {AppRegistry, StyleSheet, View, NavigatorIOS, StatusBar} from 'react-native';
 import Feed from './components/Feed';
 
 export default class ListViewDemo extends Component {
 
-
+componentDidMount() {
+}
   _renderScene(route, navigator) {
-    StatusBarIOS.setStyle('light-content');
+    <StatusBar barStyle='light-content' />
     var scene = route.component;
     return (<Feed navigator={navigator} route={route}/>)
   }
