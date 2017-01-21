@@ -3,7 +3,7 @@ Lesson2: Creating list views with headers, footer, custom cell items amongst oth
 Lesson3: Fetching data from remote API
 
 
-<img src="https://github.com/edwinbosire/ListView-React-Native/blob/master/resources/screenshot1.png" align="center">
+<img src="https://github.com/edwinbosire/ListView-React-Native/blob/master/resources/screenshot1.png" align="center" width=300>
 
 ##Features
 
