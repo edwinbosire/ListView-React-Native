@@ -1,5 +1,9 @@
 # ListView
+
+Using List view to recreate a news feed page using react-native. Using feeds from [Nation Media](www.nation.co.ke)
+
 Lesson2: Creating list views with headers, footer, custom cell items amongst other things
+
 Lesson3: Fetching data from remote API
 
 
